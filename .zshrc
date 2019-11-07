@@ -17,6 +17,7 @@ if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
 else 
   export PATH=$HOME/.config/yarn/global/node_modules/.bin:$PATH
   export PATH=$HOME/.config/composer/vendor/bin:$PATH
+  export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 fi
 
 export ZSH=$HOME/.oh-my-zsh
