@@ -1,8 +1,169 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Global Variables 
+if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
+  # Adds ~/bin to $PATH
+  export PATH=$HOME/bin:/usr/local/bin:$PATH
+  export PATH=$HOME/.composer/vendor/bin:$PATH
+
+  # Add other bins to $PATH
+  export PATH=$HOME/bin:/usr/local/bin:$PATH
+  export PATH=$HOME/Library/Python/3.7/bin:$PATH
+else 
+  export PATH=$HOME/.config/yarn/global/node_modules/.bin:$PATH
+  export PATH=$HOME/.config/composer/vendor/bin:$PATH
+fi
+
+export ZSH=$HOME/.oh-my-zsh
+
+
+
+
+# Defaults
+export EDITOR='nvim'
+
+# ~/ Clean-up
+# export ZDOTDIR="$HOME/.config/zsh"
+
 # Enable colors and change prompt:
 autoload -U colors && colors
+
 ZSH_THEME='powerlevel10k/powerlevel10k'
- 
-# History in cache directory:
+
+plugins=(
+  git
+  zsh-autosuggestions
+  yarn 
+  web-search 
+  jsontools
+  macports
+  node 
+  osx 
+  sudo
+  thor
+  docker
+  laravel-artisan
+  virtualenv
+)
+
+source $ZSH/oh-my-zsh.sh
+
+### VISUAL CUSTOMISATION ### 
+
+# Elements options of left prompt (remove the @username context)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir virtualenv rbenv vcs)
+# Elements options of right prompt
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history)
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
+#--------------------------------------------------------------------#
+# Global Configuration Variables                                     #
+#--------------------------------------------------------------------#
+# Color to use when highlighting suggestion
+# Uses format of `region_highlight`
+# More info: http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Zle-Widgets
+(( ! ${+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE} )) &&
+typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+# Prefix to use when saving original versions of bound widgets
+(( ! ${+ZSH_AUTOSUGGEST_ORIGINAL_WIDGET_PREFIX} )) &&
+typeset -g ZSH_AUTOSUGGEST_ORIGINAL_WIDGET_PREFIX=autosuggest-orig-
+# Strategies to use to fetch a suggestion
+# Will try each strategy in order until a suggestion is returned
+(( ! ${+ZSH_AUTOSUGGEST_STRATEGY} )) && {
+typeset -ga ZSH_AUTOSUGGEST_STRATEGY
+	ZSH_AUTOSUGGEST_STRATEGY=(history)
+}
+# Widgets that clear the suggestion
+(( ! ${+ZSH_AUTOSUGGEST_CLEAR_WIDGETS} )) && {
+typeset -ga ZSH_AUTOSUGGEST_CLEAR_WIDGETS
+	ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(
+		history-search-forward
+		history-search-backward
+		history-beginning-search-forward
+		history-beginning-search-backward
+		history-substring-search-up
+		history-substring-search-down
+		up-line-or-beginning-search
+		down-line-or-beginning-search
+		up-line-or-history
+		down-line-or-history
+		accept-line
+		copy-earlier-word
+	)
+}
+# Widgets that accept the entire suggestion
+(( ! ${+ZSH_AUTOSUGGEST_ACCEPT_WIDGETS} )) && {
+typeset -ga ZSH_AUTOSUGGEST_ACCEPT_WIDGETS
+	ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(
+		forward-char
+		end-of-line
+		vi-forward-char
+		vi-end-of-line
+		vi-add-eol
+	)
+}
+# Widgets that accept the entire suggestion and execute it
+(( ! ${+ZSH_AUTOSUGGEST_EXECUTE_WIDGETS} )) && {
+typeset -ga ZSH_AUTOSUGGEST_EXECUTE_WIDGETS
+	ZSH_AUTOSUGGEST_EXECUTE_WIDGETS=(
+	)
+}
+# Widgets that accept the suggestion as far as the cursor moves
+(( ! ${+ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS} )) && {
+typeset -ga ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS
+	ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
+		forward-word
+		emacs-forward-word
+		vi-forward-word
+		vi-forward-word-end
+		vi-forward-blank-word
+		vi-forward-blank-word-end
+		vi-find-next-char
+		vi-find-next-char-skip
+	)
+}
+# Widgets that should be ignored (globbing supported but must be escaped)
+(( ! ${+ZSH_AUTOSUGGEST_IGNORE_WIDGETS} )) && {
+typeset -ga ZSH_AUTOSUGGEST_IGNORE_WIDGETS
+	ZSH_AUTOSUGGEST_IGNORE_WIDGETS=(
+		orig-\*
+		beep
+		run-help
+		set-local-history
+		which-command
+		yank
+		yank-pop
+		zle-\*
+	)
+}
+# Pty name for capturing completions for completion suggestion strategy
+(( ! ${+ZSH_AUTOSUGGEST_COMPLETIONS_PTY_NAME} )) &&
+typeset -g ZSH_AUTOSUGGEST_COMPLETIONS_PTY_NAME=zsh_autosuggest_completion_pty
+
+
+
+# Add a second prompt line for the command
+POWERLEVEL9K_PROMPT_ON_NEWLINE=false
+
+# Add a space in the first prompt 
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%f"
+
+# Visual customisation of the second prompt line
+local user_symbol="$"
+if [[ $(print -P "%#") =~ "#" ]]; then
+    user_symbol = "#"
+fi
+
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{black}%K{yellow}%} $user_symbol%{%b%f%k%F{yellow}%} %{%f%}"
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+
+# Change the git status to red when something isn't committed and pushed
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='red'
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
@@ -45,79 +206,12 @@ echo -ne "\e[5 q"
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+#
 
+export GOOGLE_APPLICATION_CREDENTIALS=/Users/reisnobre/vision.json
+export JAVA_HOME=/usr/libexec/java_home
 
-plugins=(
-  git
-  zsh-autosuggestions
-  yarn 
-  web-search 
-  jsontools
-  macports
-  node 
-  osx 
-  sudo
-  thor
-  docker
-  laravel-artisan
-  virtualenv
-)
+[ -f "$HOME/.config/zsh/alias.zsh" ] && source "$HOME/.config/zsh/alias.zsh"
 
-# this goes before oh-my-zsh.sh is sourced
-# ZSH_DISABLE_COMPFIX=true
-
-# User configuration
-
-
-# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Reload the plugin to highlight the commands each time Iterm2 starts 
-# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-
-### VISUAL CUSTOMISATION ### 
-
-# Elements options of left prompt (remove the @username context)
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir virtualenv rbenv vcs)
-# Elements options of right prompt
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history)
-
-
-
-# Add a second prompt line for the command
-POWERLEVEL9K_PROMPT_ON_NEWLINE=false
-
-# Add a space in the first prompt 
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%f"
-
-# Visual customisation of the second prompt line
-local user_symbol="$"
-if [[ $(print -P "%#") =~ "#" ]]; then
-    user_symbol = "#"
-fi
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{black}%K{yellow}%} $user_symbol%{%b%f%k%F{yellow}%} %{%f%}"
-
-
-# Change the git status to red when something isn't committed and pushed
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='red'
-
-# Add a new line after the global prompt 
-# POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-
-bindkey "^P" up-line-or-search
-bindkey "^N" down-line-or-search
-
-
-
-# Colorise the top Tabs of Iterm2 with the same color as background
-# Just change the 18/26/33 wich are the rgb values 
-# echo -e "\033]6;1;bg;red;brightness;18\a"
-# echo -e "\033]6;1;bg;green;brightness;26\a"
-
-
-# export PATH=/usr/local/opt/node@8/bin:$PATH
-
-# Load aliases and shortcuts if existent.
-[ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
-[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"cho -e "\033]6;1;bg;blue;brightness;33\a"
+[ -f "$HOME/.config/zsh/p10k.zsh" ] && source "$HOME/.config/zsh/p10k.zsh"
