@@ -211,9 +211,6 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #
 
-export GOOGLE_APPLICATION_CREDENTIALS=/Users/reisnobre/vision.json
-export JAVA_HOME=/usr/libexec/java_home
-
 [ -f "$HOME/.config/zsh/alias.zsh" ] && source "$HOME/.config/zsh/alias.zsh"
 
 [ -f "$HOME/.config/zsh/p10k.zsh" ] && source "$HOME/.config/zsh/p10k.zsh"
