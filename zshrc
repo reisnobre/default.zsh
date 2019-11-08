@@ -6,14 +6,36 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Paths
-for config in $HOME/.config/zsh/config/*.zsh; do
-  source "$HOME/.config/zsh/" config
-done
+# for config in $HOME/.config/zsh/config/*.zsh; do
+#   source "$HOME/.config/zsh/" config
+# done
+
+if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
+  # Adds ~/bin to $PATH
+  export PATH=$HOME/bin:/usr/local/bin:$PATH
+  export PATH=$HOME/.composer/vendor/bin:$PATH
+
+  # Add other bins to $PATH
+  export PATH=$HOME/bin:/usr/local/bin:$PATH
+  export PATH=$HOME/Library/Python/3.7/bin:$PATH
+else 
+  export PATH=/home/linuxbrew/.linuxbrew/Cellar:$PATH
+  export PATH=$HOME/.config/yarn/global/node_modules/.bin:$PATH
+  export PATH=$HOME/.config/composer/vendor/bin:$PATH
+  export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
+fi
+
+alias vim='nvim'
+alias tmux='tmux -u'
+alias python='python3'
+alias pip='pip3'
+alias virtualenv='python -m virtualenv'
+alias pa='php artisan'
+alias ctags="`brew --prefix`/bin/ctags"
+alias setup_python="rsync -r ~/code/defaults/python/ . --exclude=.vim; pip install flake8 flake8_docstrings pylint ipython"
+
 
 export ZSH=$HOME/.oh-my-zsh
-
-
-
 
 # Defaults
 export EDITOR='nvim'
