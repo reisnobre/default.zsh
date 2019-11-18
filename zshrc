@@ -15,25 +15,27 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
   git
   zsh-autosuggestions
-  yarn 
-  web-search 
+  yarn
+  web-search
   jsontools
   macports
-  node 
-  osx 
+  node
+  osx
   sudo
   thor
   docker
   laravel-artisan
   virtualenv
   zsh-syntax-highlighting
+  history
+  wakatime
 )
 
 source $ZSH/oh-my-zsh.sh
 
-HISTSIZE=10000
-SAVEHIST=10000
-HISTFILE=~/.cache/zsh/history
+# HISTSIZE=10000
+# SAVEHIST=10000
+# HISTFILE=~/.cache/zsh/history
 
 for config_file in $HOME/.config/zsh/config/*.zsh; do
   source $config_file
