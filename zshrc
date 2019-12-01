@@ -33,9 +33,9 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# HISTSIZE=10000
-# SAVEHIST=10000
-# HISTFILE=~/.cache/zsh/history
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.cache/zsh/history
 
 for config_file in $HOME/.config/zsh/config/*.zsh; do
   source $config_file
