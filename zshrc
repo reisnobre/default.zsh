@@ -26,7 +26,8 @@ plugins=(
   virtualenv
   zsh-syntax-highlighting
   history
-  wakatime
+  zsh-wakatime
+  # fzf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -35,7 +36,10 @@ for config_file in $HOME/.config/zsh/config/*.zsh; do
   source $config_file
 done
 
+# bindkey '^i' echo 'scf'
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
