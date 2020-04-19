@@ -4,8 +4,8 @@
 # alias vim='vii'
 alias vim='nvim'
 alias tmux='tmux -u'
-alias python='python3'
-alias pip='pip3'
+# alias python='python3'
+# alias pip='pip'
 alias venv='python3 -m venv'
 alias vtop='vtop --theme nord --no-mouse'
 
