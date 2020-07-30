@@ -17,4 +17,6 @@ export FZF_DEFAULT_OPTS='
 --layout=reverse
 --margin=0,2
 '
+
+export BAT_THEME='Nord'
 # --preview "bat {} --theme=Nord --color always"

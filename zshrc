@@ -9,6 +9,8 @@ export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+GITSTATUS_LOG_LEVEL=DEBUG
+
 #--------------------------------------------------------------------#
 # Plugins                                                            #
 #--------------------------------------------------------------------#
@@ -27,7 +29,6 @@ plugins=(
   zsh-syntax-highlighting
   history
   zsh-wakatime
-  # fzf
 )
 
 source $ZSH/oh-my-zsh.sh
