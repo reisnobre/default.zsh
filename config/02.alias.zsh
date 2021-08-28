@@ -2,7 +2,7 @@
 # Aliases                                                            #
 #--------------------------------------------------------------------#
 # alias vim='vii'
-alias vim='nvim'
+alias vim='lvim'
 alias tmux='tmux -u'
 # alias python='python3'
 # alias pip='pip'

@@ -4,7 +4,6 @@
 export EDITOR='nvim'
 export GOOGLE_APPLICATION_CREDENTIALS=$HOME/vision.json
 export JAVA_HOME=/usr/libexec/java_home
-# export FZF_DEFAULT_COMMAND='fzf'
 export FZF_DEFAULT_OPS="--extended"
 export FZF_DEFAULT_OPTS='
 -m
@@ -19,4 +18,10 @@ export FZF_DEFAULT_OPTS='
 '
 
 export BAT_THEME='Nord'
-# --preview "bat {} --theme=Nord --color always"
+export FZF_PREVIEW_PREVIEW_BAT_THEME='Nord'
+export LC_ALL=en_US.UTF-8  
+export LANG=en_US.UTF-8
+
+export PATH=/usr/local/opt/php@7.1/bin:$PATH
+export GIT_PAGER='diff-so-fancy'
+
