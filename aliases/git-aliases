@@ -1,0 +1,10 @@
+#!/bin/sh
+
+#
+# Aliases
+# (sorted alphabetically)
+# from https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/git/git.plugin.zsh
+
+alias g='git'
+alias ga='git add'
+alias gc='git commit -v'

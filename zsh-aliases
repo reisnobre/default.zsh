@@ -1,4 +1,12 @@
 #!/bin/sh
+
+alias vim='lvim'
+alias tmux='tmux -u'
+alias venv='python3 -m venv'
+alias vtop='vtop --theme nord --no-mouse'
+
+# Paths
+alias gcr='cd $(git root)'
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 
 # Colorize grep output (good for log files)
