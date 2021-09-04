@@ -1,54 +1,63 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block, everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+#!/bin/sh
 
-export ZSH=$HOME/.oh-my-zsh
+# MAIN CONFIGS
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
+export ZDOTDIR=$HOME/.config/zsh
+HISTFILE=~/.zsh_history
+setopt appendhistory
+unsetopt BEEP # beeping is annoying
 
-GITSTATUS_LOG_LEVEL=DEBUG
+# some useful options (man zshoptions)
+setopt autocd extendedglob nomatch menucomplete
+setopt interactive_comments
+stty stop undef		# Disable ctrl-s to freeze terminal.
+zle_highlight=('paste:none')
 
-#--------------------------------------------------------------------#
-# Plugins                                                            #
-#--------------------------------------------------------------------#
-plugins=(
-  git
-  zsh-autosuggestions
-  yarn
-  web-search
-  jsontools
-  macports
-  node
-  osx
-  sudo
-  laravel-artisan
-  virtualenv
-  zsh-syntax-highlighting
-  history
-  zsh-wakatime
-)
+# completions
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+_comp_options+=(globdots)		# Include hidden files.
 
-source $ZSH/oh-my-zsh.sh
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
 
-for config_file in $HOME/.config/zsh/config/*.zsh; do
-  source $config_file
-done
+# Colors
+autoload -Uz colors && colors
 
-# bindkey '^i' echo 'scf'
+# Useful Functions
+source "$ZDOTDIR/zsh-functions"
 
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Normal files to source
+zsh_add_file "zsh-exports"
+zsh_add_file "zsh-vim-mode"
+zsh_add_file "zsh-aliases"
+zsh_add_file "aliases/git-aliases"
+zsh_add_file "aliases/laravel-aliases"
+zsh_add_file "zsh-prompt"
 
-test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
+# Plugins
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
+zsh_add_plugin "zsh-users/zsh-completions"
+zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
+zsh_add_plugin "hlissner/zsh-autopair"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Key-bindings
+bindkey "^p" up-line-or-beginning-search # Up
+bindkey "^n" down-line-or-beginning-search # Down
+bindkey "^k" up-line-or-beginning-search # Up
+bindkey "^j" down-line-or-beginning-search # Down
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+compinit
 
-if [ -n "${NVIM_LISTEN_ADDRESS+x}" ]; then
-  export COLORTERM="truecolor"
-fi
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+
+# Environment variables set everywhere
+export EDITOR="lvim"
+export TERMINAL="iterm2"
+export BROWSER="safari"
+
+export QT_QPA_PLATFORMTHEME=qt5ct

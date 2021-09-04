@@ -1,0 +1,54 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export ZSH=$HOME/.oh-my-zsh
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+GITSTATUS_LOG_LEVEL=DEBUG
+
+#--------------------------------------------------------------------#
+# Plugins                                                            #
+#--------------------------------------------------------------------#
+plugins=(
+  git # git aliases (already repleaced)
+  zsh-autosuggestions # already repleaced
+  yarn # I don't use at all
+  web-search # I don't use at all
+  jsontools # don't not what it does
+  macports # don't know what it does
+  node # don't use
+  osx # don't know what it does
+  sudo # don't know what it does
+  laravel-artisan # replaced
+  virtualenv  # 
+  zsh-syntax-highlighting
+  history
+  zsh-wakatime
+)
+
+source $ZSH/oh-my-zsh.sh
+
+for config_file in $HOME/.config/zsh/config/*.zsh; do
+  source $config_file
+done
+
+# bindkey '^i' echo 'scf'
+
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+if [ -n "${NVIM_LISTEN_ADDRESS+x}" ]; then
+  export COLORTERM="truecolor"
+fi
