@@ -29,7 +29,8 @@ setopt interactive_comments
 zle_highlight=('paste:none')
 
 # completions
-autoload -Uz compinit
+fpath+=~/.config/zsh/completions/_fnm
+autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 _comp_options+=(globdots)		# Include hidden files.
@@ -43,14 +44,15 @@ zle -N down-line-or-beginning-search
 autoload -Uz colors && colors
 
 # Useful Functions
-source "$ZDOTDIR/zsh-functions"
+source "$ZDOTDIR/config/zsh-functions"
 
 # Normal files to source
-zsh_add_file "zsh-exports"
-zsh_add_file "zsh-vim-mode"
-zsh_add_file "zsh-aliases"
+zsh_add_file "paths/zsh-exports"
+zsh_add_file "config/zsh-vim-mode"
+zsh_add_file "aliases/zsh-aliases"
 zsh_add_file "aliases/git-aliases"
 zsh_add_file "aliases/laravel-aliases"
+zsh_add_file "functions/navigation.zsh"
 
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
@@ -64,6 +66,3 @@ bindkey "^n" down-line-or-beginning-search # Down
 bindkey "^k" up-line-or-beginning-search # Up
 bindkey "^j" down-line-or-beginning-search # Down
 
-compinit
-
-# Environment variables set everywhere

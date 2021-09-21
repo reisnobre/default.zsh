@@ -5,6 +5,9 @@ alias tmux='tmux -u'
 alias venv='python3 -m venv'
 alias vtop='vtop --theme nord --no-mouse'
 
+alias y="yarn"
+alias ya="yarn add"
+
 # Paths
 alias gcr='cd $(git root)'
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
@@ -19,6 +22,13 @@ alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
 
+# better ls
+alias ls='lsd'
+alias l='ls -Fla'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+
 # easier to read disk
 alias df='df -h'     # human-readable sizes
 
@@ -27,22 +37,3 @@ alias psmem='ps auxf | sort -nr -k 4 | head -5'
 
 # get top process eating cpu ##
 alias pscpu='ps auxf | sort -nr -k 3 | head -5'
-
-case "$(uname -s)" in
-
-Darwin)
-	# echo 'Mac OS X'
-	alias ls='ls -G'
-	;;
-
-Linux)
-	alias ls='ls --color=auto'
-	;;
-
-CYGWIN* | MINGW32* | MSYS* | MINGW*)
-	# echo 'MS Windows'
-	;;
-*)
-	# echo 'Other OS'
-	;;
-esac

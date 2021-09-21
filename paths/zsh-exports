@@ -39,3 +39,4 @@ export LANG=en_US.UTF-8
 export PATH=/usr/local/opt/php@7.1/bin:$PATH
 export GIT_PAGER='diff-so-fancy'
 
+eval "$(fnm env)"
