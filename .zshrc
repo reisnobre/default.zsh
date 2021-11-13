@@ -12,23 +12,21 @@ source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+# Base functions
+source "$ZDOTDIR/config/zsh-functions"
 
-# MAIN CONFIGS
-
+# Base setup
 export ZDOTDIR=$HOME/.config/zsh
 HISTFILE=~/.zsh_history
 
+# Base config
 setopt appendhistory
-
-unsetopt BEEP # beeping is annoying
-
-# some useful options (man zshoptions)
+unsetopt BEEP 
 setopt autocd extendedglob nomatch menucomplete
 setopt interactive_comments
 zle_highlight=('paste:none')
 
-# completions
+# Completion setup
 fpath+=~/.config/zsh/completions/_fnm
 autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
@@ -43,26 +41,21 @@ zle -N down-line-or-beginning-search
 # Colors
 autoload -Uz colors && colors
 
-# Useful Functions
-source "$ZDOTDIR/config/zsh-functions"
-
-# Normal files to source
-zsh_add_file "paths/zsh-exports"
+# Config
+zsh_add_file "config/zsh-env-variables"
 zsh_add_file "config/zsh-vim-mode"
-zsh_add_file "aliases/zsh-aliases"
-zsh_add_file "aliases/git-aliases"
-zsh_add_file "aliases/laravel-aliases"
-zsh_add_file "functions/navigation.zsh"
+zsh_add_file "config/zsh-keybindings"
+
+# Aliases
+zsh_add_file "aliases/alias-git"
+zsh_add_file "aliases/alias-laravel"
+zsh_add_file "aliases/alias-navigation"
+
+# Helpers
+zsh_add_file "helpers/fzf-navigation.zsh"
 
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-completions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
-
-# Key-bindings
-bindkey "^p" up-line-or-beginning-search # Up
-bindkey "^n" down-line-or-beginning-search # Down
-bindkey "^k" up-line-or-beginning-search # Up
-bindkey "^j" down-line-or-beginning-search # Down
-
