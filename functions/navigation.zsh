@@ -1,28 +1,36 @@
 # Go to config folder
 glabs () { 
-  cd $(find ~/Labs -maxdepth 1 -print | fzf) 
+  cd $(find ~/Labs -maxdepth 1 -type d -print | fzf) 
 }
 
 # Go to config folder
 garchive () { 
-  cd $(find ~/Archive -maxdepth 1 -print | fzf) 
+  cd $(find ~/Archive -maxdepth 1 -type d -print | fzf) 
 }
 
 # Go to config folder
 gcode () { 
-  cd $(find ~/Code -maxdepth 1 -print | fzf) 
+  cd $(find ~/Code -maxdepth 1 -type d -print | fzf) 
 }
 
 # Go to config folder
 gconfig () { 
-  cd $(find ~/.config -maxdepth 1 -print | fzf) 
+  cd $(find ~/.config -maxdepth 1 -type d -print | fzf) 
 }
 # Go to config Lunarvim folder
 glvim () {
   cd ~/.local/share/lunarvim/lvim/
 }
 
-# Go update lvim
+# Go to lunarvim
+glvim () {
+  cd ~/.local/share/lunarvim/lvim/
+}
+
+gpacker () {
+  cd ~/.local/share/lunarvim/site/pack/packer/
+}
+
 lvim_update () {
   (cd ~/.local/share/lunarvim/lvim/ && git pull origin rolling;)
 }
