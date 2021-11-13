@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# General aliases that I use everyday
+
 alias vim='lvim'
 alias tmux='tmux -u'
 alias venv='python3 -m venv'

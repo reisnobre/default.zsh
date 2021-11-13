@@ -49,7 +49,7 @@ zsh_add_file "config/zsh-keybindings"
 # Aliases
 zsh_add_file "aliases/alias-git"
 zsh_add_file "aliases/alias-laravel"
-zsh_add_file "aliases/alias-navigation"
+zsh_add_file "aliases/aliases"
 
 # Helpers
 zsh_add_file "helpers/fzf-navigation.zsh"
