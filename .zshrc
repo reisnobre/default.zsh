@@ -50,6 +50,8 @@ zsh_add_file "config/zsh-keybindings"
 zsh_add_file "aliases/alias-git"
 zsh_add_file "aliases/alias-laravel"
 zsh_add_file "aliases/aliases"
+zsh_add_file "aliases/alias-docker"
+zsh_add_file "aliases/alias-laravel-docker"
 
 # Helpers
 zsh_add_file "helpers/fzf-navigation.zsh"

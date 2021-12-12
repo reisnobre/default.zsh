@@ -1,0 +1,137 @@
+#!/bin/sh
+# general
+
+alias dartisan='dcr artisan'
+alias da='dcr artisan'
+alias dav='da -V'
+alias dacc='da clear-compiled'
+alias dad='da down'
+alias dae='da env'
+alias dah='da help'
+alias dai='da inspire'
+alias dal='da list'
+alias dap='da preset'
+alias das='da serve'
+alias dat='da tinker'
+alias dati='da tinx'
+alias dau='da up'
+
+#app
+alias aanm='da app:name'
+
+#auth
+alias aacr='da auth:clear-resets'
+
+# cache
+alias accl='da cache:clear'
+alias acfg='da cache:forget'
+alias actb='da cache:table'
+
+# config
+alias acfcc='da config:cache'
+alias acfcl='da config:clear'
+
+# common
+alias adbs='da db:seed'
+alias aeg='da event:generate'
+alias akg='da key:generate'
+
+# make
+alias damkau='da make:auth'
+alias damkch='da make:channel'
+alias damkcm='da make:command'
+alias damkct='da make:controller'
+alias damkctr='da make:controller -r'
+alias damkev='da make:event'
+alias damkex='da make:exception'
+alias damkfc='da make:factory'
+alias damkjb='da make:job'
+alias damkls='da make:listener'
+alias damkml='da make:mail'
+alias damkmw='da make:middleware'
+alias damkmg='da make:migration'
+alias damkmd='da make:model'
+alias damkmdm='da make:model -m'
+alias damknf='da make:notification'
+alias damkos='da make:observer'
+alias damkpl='da make:policy'
+alias damkpv='da make:provider'
+alias damkrq='da make:request'
+alias damkres='da make:resource'
+alias damkrl='da make:rule'
+alias damksd='da make:seeder'
+alias damkts='da make:test'
+
+# migrate
+alias damg='da migrate'
+alias damgf='da migrate --force'
+alias damgs='da migrate --seed'
+alias damgp='da migrate --pretend'
+alias damgt='da migrate --env=testing'
+alias damgfr='da migrate:fresh'
+alias damgis='da migrate:install'
+alias damgrf='da migrate:refresh'
+alias damgrs='da migrate:reset'
+alias damgrb='da migrate:rollback'
+alias damgst='da migrate:status'
+
+# notifications
+alias anftb='da notifications:table'
+
+# optimize
+alias dao='da optimize'
+alias daoc='da optimize:clear'
+# package
+alias dapd='da package:discover'
+
+# queue
+alias daqf='da queue:failed'
+alias daqft='da queue:failed-table'
+alias daqfl='da queue:flush'
+alias daqfg='da queue:forget'
+alias daqls='da queue:listen'
+alias daqrs='da queue:restart'
+alias daqrt='da queue:retry'
+alias daqtb='da queue:table'
+alias daqwk='da queue:work'
+
+# route
+alias darcc='da route:cache'
+alias darcl='da route:clear'
+alias darls='da route:list'
+
+# schedule
+alias dasfn='da schedule:finish'
+alias dasrn='da schedule:run'
+
+# session
+alias dastb='da session:table'
+
+# storage
+alias dasln='da storage:link'
+
+# vendor
+alias davpb='da vendor:publish'
+
+# view
+alias davcc='da view:cache'
+alias davcl='da view:clear'
+
+# horizon
+alias dahz='da horizon'
+alias dahzas='da horizon:assets'
+alias dahzct='da horizon:continue'
+alias dahzls='da horizon:list'
+alias dahzps='da horizon:pause'
+alias dahzpg='da horizon:purge'
+alias dahzss='da horizon:snapshot'
+alias dahzsv='da horizon:supervisor'
+alias dahzsvs='da horizon:supervisors'
+alias dahztm='da horizon:terminate'
+alias dahzto='da horizon:timeout'
+alias dahzwk='da horizon:work'
+
+# passport
+alias dapspi='da passport:install'
+alias dapspc='da passport:client'
+alias dapspk='da passport:keys'
