@@ -4,30 +4,29 @@
 HISTSIZE=1000000
 SAVEHIST=1000000
 
+export PATH=/opt/homebrew/bin:$PATH
+export YARN_HOME=$HOME/bin/yarn/yarn-v1.22.10
+export PATH=$YARN_HOME/bin:$PATH
+
 export PATH="$HOME/.local/bin":$PATH
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.composer/vendor/bin:$PATH
-export PATH=$HOME/.local/share/go/bin:$PATH
 
-export PATH=/usr/local/opt/python@3.9/bin:$PATH
-export PATH=/usr/local/bin/yarn:$PATH
-export PATH=/usr/local/opt/mysql@5.7/bin:$PATH
-export PATH=/usr/local/opt/node@12/bin:$PATH
-
-export TERMINAL="iterm2"
+export TERMINAL="kitty"
 export BROWSER="safari"
 export EDITOR='lvim'
 export FZF_DEFAULT_OPS="--extended"
+
 export FZF_DEFAULT_OPTS='
 -m
 --extended
---color=fg:#e5e9f0,bg:#2E3440,hl:#81a1c1
---color=fg+:#e5e9f0,bg+:#2E3440,hl+:#81a1c1
---color=info:#eacb8a,prompt:#bf6069,pointer:#b48dac
---color=marker:#a3be8b,spinner:#b48dac,header:#a3be8b
+--color=fg:#DCD7BA,bg:#1F1F28,hl:#FFA066
+--color=fg+:#DCD7BA,bg+:#1F1F28,hl+:#FFA066
+--color=info:#E46876,prompt:#FF5D62,pointer:#D27E99
+--color=marker:#98BB6C,spinner:#b48dac,header:#98BB6C
 --info=inline
 --layout=reverse
 --margin=0,2
@@ -40,7 +39,8 @@ export FZF_PREVIEW_PREVIEW_BAT_THEME='Nord'
 export LC_ALL=en_US.UTF-8  
 export LANG=en_US.UTF-8
 
-export PATH=/usr/local/opt/php@7.1/bin:$PATH
 export GIT_PAGER='diff-so-fancy'
 
 eval "$(fnm env)"
+
+export CERTS_FOLDER=$HOME/Certs

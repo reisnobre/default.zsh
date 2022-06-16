@@ -3,14 +3,15 @@
 # General aliases that I use everyday
 
 alias vim='lvim'
-alias tmux='tmux -u'
 alias venv='python3 -m venv'
-alias vtop='vtop --theme nord --no-mouse'
+alias n12='fnm use 12'
+alias n16='fnm use 16'
 
 alias y="yarn"
 alias ya="yarn add"
+alias prettierd="prettier_d_slim"
+alias gtop="gotop"
 
-# Paths
 alias gcr='cd $(git root)'
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 
@@ -35,8 +36,8 @@ alias lt='ls --tree'
 alias df='df -h'     # human-readable sizes
 
 # get top process eating memory
-alias psmem='ps auxf | sort -nr -k 4 | head -5'
+alias psmem='ps aux | sort -nr -k 4 | head -5'
 
 # get top process eating cpu ##
-alias pscpu='ps auxf | sort -nr -k 3 | head -5'
+alias pscpu='ps aux | sort -nr -k 3 | head -5'
 alias whasmyip='dig +short myip.opendns.com @resolver1.opendns.com'

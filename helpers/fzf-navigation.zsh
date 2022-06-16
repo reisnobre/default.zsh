@@ -14,6 +14,11 @@ gcode () {
 }
 
 # Go to config folder
+gz () { 
+  cd $(find ~/Zettelkasten -maxdepth 1 -type d -print | fzf) 
+}
+
+# Go to config folder
 gconfig () { 
   cd $(find ~/.config -maxdepth 1 -type d -print | fzf) 
 }
