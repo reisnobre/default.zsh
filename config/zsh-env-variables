@@ -23,13 +23,12 @@ export FZF_DEFAULT_OPS="--extended"
 export FZF_DEFAULT_OPTS='
 -m
 --extended
---color=fg:#DCD7BA,bg:#1F1F28,hl:#FFA066
---color=fg+:#DCD7BA,bg+:#1F1F28,hl+:#FFA066
---color=info:#E46876,prompt:#FF5D62,pointer:#D27E99
---color=marker:#98BB6C,spinner:#b48dac,header:#98BB6C
 --info=inline
 --layout=reverse
 --margin=0,2
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8
+--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8
 '
 
 export TERM='xterm-256color'

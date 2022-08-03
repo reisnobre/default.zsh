@@ -1,27 +1,25 @@
-#!/bin/sh
-#
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+#!/bin/zsh
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+source ~/powerlevel10k/powerlevel10k.zsh-theme
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# Base functions
+# Base functions setup
 source "$ZDOTDIR/config/zsh-functions"
 
-# Base setup
+# Setup of ZSH folder
 export ZDOTDIR=$HOME/.config/zsh
+
+# Setup zsh history file
 HISTFILE=~/.zsh_history
 
 # Base config
 setopt appendhistory
-unsetopt BEEP 
+unsetopt BEEP
 setopt autocd extendedglob nomatch menucomplete
 setopt interactive_comments
 zle_highlight=('paste:none')
@@ -41,10 +39,12 @@ zle -N down-line-or-beginning-search
 # Colors
 autoload -Uz colors && colors
 
-# Config
-zsh_add_file "config/zsh-env-variables"
+# Zsh config
 zsh_add_file "config/zsh-vim-mode"
 zsh_add_file "config/zsh-keybindings"
+
+# ENV variables
+zsh_add_file "config/zsh-env-variables"
 
 # Aliases
 zsh_add_file "aliases/alias-git"
@@ -55,9 +55,13 @@ zsh_add_file "aliases/alias-laravel-docker"
 
 # Helpers
 zsh_add_file "helpers/fzf-navigation.zsh"
+zsh_add_file "helpers/mkcert-helpers.zsh"
 
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-completions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
