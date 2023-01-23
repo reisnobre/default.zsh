@@ -1,4 +1,5 @@
 #!/bin/zsh
+[ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -58,10 +59,11 @@ zsh_add_file "helpers/fzf-navigation.zsh"
 zsh_add_file "helpers/mkcert-helpers.zsh"
 
 # Plugins
-zsh_add_plugin "zsh-users/zsh-autosuggestions"
-zsh_add_plugin "zsh-users/zsh-completions"
-zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
-zsh_add_plugin "hlissner/zsh-autopair"
+plug "zap-zsh/supercharge"
+plug "zsh-users/zsh-autosuggestions"
+plug "zsh-users/zsh-completions"
+plug "zsh-users/zsh-syntax-highlighting"
+plug "hlissner/zsh-autopair"
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
