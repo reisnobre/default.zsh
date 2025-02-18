@@ -14,6 +14,11 @@ gcode () {
 }
 
 # Go to config folder
+gobsidian () { 
+  cd $(find ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents -maxdepth 1 -type d -print | fzf | sed 's/ /\\ /g')
+}
+
+# Go to config folder
 gz () { 
   cd $(find ~/Zettelkasten -maxdepth 1 -type d -print | fzf) 
 }

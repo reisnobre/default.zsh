@@ -1,8 +1,10 @@
 #!/bin/sh
 # general
 
-alias dartisan='dcr artisan'
-alias da='dcr artisan'
+alias sartisan='sail artisan'
+alias dartisan='dcr --rm artisan'
+alias da=dartisan
+alias sa=sartisan
 alias dav='da -V'
 alias dacc='da clear-compiled'
 alias dad='da down'

@@ -59,11 +59,17 @@ zsh_add_file "helpers/fzf-navigation.zsh"
 zsh_add_file "helpers/mkcert-helpers.zsh"
 
 # Plugins
+plug "Aloxaf/fzf-tab"
+plug "Freed-Wu/fzf-tab-source"
+plug "hlissner/zsh-autopair"
+plug "wintermi/zsh-brew"
+plug "zap-zsh/fzf"
 plug "zap-zsh/supercharge"
+plug "zap-zsh/vim"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-completions"
 plug "zsh-users/zsh-syntax-highlighting"
-plug "hlissner/zsh-autopair"
+plug "wintermi/zsh-fnm"
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh

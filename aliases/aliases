@@ -2,9 +2,11 @@
 
 # General aliases that I use everyday
 
+alias sail='./vendor/bin/sail'
 alias vim='lvim'
 alias venv='python3 -m venv'
-alias n12='fnm use 12'
+alias n12='fnm use 12.22.12'
+alias n14='fnm use 14'
 alias n16='fnm use 16'
 
 alias y="yarn"
