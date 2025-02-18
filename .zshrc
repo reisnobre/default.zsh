@@ -1,13 +1,6 @@
 #!/bin/zsh
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+export ZDOTDIR=$HOME/.config/zsh
 
 # Base functions setup
 source "$ZDOTDIR/config/zsh-functions"
@@ -15,30 +8,36 @@ source "$ZDOTDIR/config/zsh-functions"
 # Setup of ZSH folder
 export ZDOTDIR=$HOME/.config/zsh
 
-# Setup zsh history file
+# Colors
+autoload -Uz colors && colors
+
+# History
+HISTSIZE=5000
 HISTFILE=~/.zsh_history
-
-# Base config
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
 setopt appendhistory
-unsetopt BEEP
-setopt autocd extendedglob nomatch menucomplete
-setopt interactive_comments
-zle_highlight=('paste:none')
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
-# Completion setup
+# Completion styling
 fpath+=~/.config/zsh/completions/_fnm
-autoload -Uz compinit && compinit
-zstyle ':completion:*' menu select
 zmodload zsh/complist
 _comp_options+=(globdots)		# Include hidden files.
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-
-# Colors
-autoload -Uz colors && colors
 
 # Zsh config
 zsh_add_file "config/zsh-vim-mode"
@@ -64,6 +63,14 @@ plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-completions"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "hlissner/zsh-autopair"
+plug "zap-zsh/fzf"
+plug "zap-zsh/supercharge"
+plug "zap-zsh/vim"
+plug "Aloxaf/fzf-tab"
+plug "Freed-Wu/fzf-tab-source"
+plug "wintermi/zsh-fnm"
 
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+# Load completions
+autoload -Uz compinit && compinit
+
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/base.toml)"
