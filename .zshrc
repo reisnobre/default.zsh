@@ -73,4 +73,5 @@ plug "wintermi/zsh-fnm"
 # Load completions
 autoload -Uz compinit && compinit
 
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/base.toml)"
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/catppuccin_mocha.omp.toml)"
+eval "$(zoxide init zsh)"
